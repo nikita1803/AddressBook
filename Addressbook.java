@@ -1,7 +1,7 @@
 package addressbook;
 
 import java.util.ArrayList;
-
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
@@ -87,6 +87,29 @@ public class Addressbook
 	        }
 	}
 	/**
+	 * delete contact is a function is use to delete the value 
+	 * @param personDetail
+	 * iterator is use to iterate all the details person
+	 * hasNext keyword is use to iterate next value till the array length.
+	 */
+	public static void deleteContact(ArrayList<String> personDetail)
+	{
+		Iterator itr = personDetail.iterator();
+		System.out.println("enter value to delete");
+		Scanner input = new Scanner(System.in);
+		String deleteValue = input.nextLine();
+        while (itr.hasNext())
+        {
+            String x = (String)itr.next();
+            if (x.equals(deleteValue))
+                itr.remove();
+        }
+        for (String str : personDetail)
+        {
+            System.out.println(str + " "); 
+        }
+	}
+	/**
 	 * all functions are passes in main function to perform .
 	 * @param args
 	 */
@@ -97,7 +120,7 @@ public class Addressbook
         Scanner input = new Scanner(System.in);
         System.out.print("Enter the First name : ");
         String fname = input.nextLine();
-        System.out.print("What you want to perform ? Press 1 for Add the details , press 2 for edit the details : ");
+        System.out.print("What you want to perform ? Press 1 for Add the details , press 2 for edit the details , press 3 for delete the details : ");
         int option = input.nextInt();
         switch(option)
         {
@@ -106,6 +129,9 @@ public class Addressbook
         	break;
         	case 2:
         		editContact(personDetail);
+        	break;
+        	case 3:
+        		deleteContact(personDetail);
         	break;
         	default:
         		System.out.print("Please enter the valid number : ");	
