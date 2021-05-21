@@ -45,6 +45,10 @@ public class Addressbook
         PersonDetail.add(phone);
         PersonDetail.add(email);
 
+        for (String str : PersonDetail)
+        {
+            System.out.println(str); 
+        }
 	}
 }
 
